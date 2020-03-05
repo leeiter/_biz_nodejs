@@ -12,6 +12,7 @@ router.get("/list", function(req, res) {
     })
 })
 
+// update
 router.get("/update/:id", function(req, res) {
     var id = req.params.id
 
