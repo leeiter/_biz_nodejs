@@ -1,2 +1,2 @@
-npm install moment
-npm install moment-timezone
+* npm install moment
+* npm install moment-timezone
