@@ -7,6 +7,10 @@
 
 @font-face { font-family: 'MapoDPPA'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoDPPA.woff') format('woff'); font-weight: normal; font-style: normal; }
 
+body {
+    position: relative;
+}
+
 div.movie_list {
     width: 60%;
     margin: 0 auto;
@@ -17,6 +21,12 @@ img {
     margin: auto 0;
 }
 
+div.img_box {
+    width: 110px;
+    height: 155px;
+    margin: auto 0;
+}
+
 div.p_tag {
     margin: 20px 0 20px 30px;
 }
@@ -24,4 +34,18 @@ div.p_tag {
 p {
     font-size: 0.7rem;
     display: block;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+input {
+    position: absolute;
+    top: 500px;
+    left: 490px;
+}
+
+p.br-box {
+    padding: 15px 0;
 }

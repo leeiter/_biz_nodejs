@@ -4,7 +4,8 @@ var tmapConfig = require('./tmap_sec')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { tmap_api : tmapConfig.api_key });
+  // res.render('index', { tmap_api : tmapConfig.api_key });
+  res.redirect('/mask/search')
 });
 
 module.exports = router;

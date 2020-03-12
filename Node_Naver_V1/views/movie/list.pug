@@ -1,11 +1,22 @@
 extends ../layout
 
 block content
+    style.
+        .elipsis {
+            width: 150px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
 
+    p.br-box
     each movie, index in movies
         div.w3-container.w3-border-bottom.movie_list
             div.w3-row-padding.row
-                img(src=movie.image)
+                if movie.image
+                    img(src=movie.image)
+                else
+                    div.w3-border.w3-border-blue.img_box
                 div.p_tag
                     h5
                         // HTML 코드에 보이는 주석
@@ -16,7 +27,8 @@ block content
                     p= movie.pubDate	
                     p= movie.director
                     p= movie.actor
-                    p= movie.userRating
+                    p.elipsis= movie.userRating
+    p.br-box
 
 
 
