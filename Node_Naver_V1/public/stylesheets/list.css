@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'MapoDPPA';
+}
+
+@font-face { font-family: 'MapoDPPA'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoDPPA.woff') format('woff'); font-weight: normal; font-style: normal; }
+
+div.movie_list {
+    width: 60%;
+    margin: 0 auto;
+}
+
+img {
+    height: 100%;
+    margin: auto 0;
+}
+
+div.p_tag {
+    margin: 20px 0 20px 30px;
+}
+
+p {
+    font-size: 0.7rem;
+    display: block;
+}

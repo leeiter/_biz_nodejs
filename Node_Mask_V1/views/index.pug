@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  script(src="https://apis.openapi.sk.com/tmap/jsv2?version=1&appkey=" + tmap_api)
+  script.
+    $(function() {
+      var map = new Tmapv2.Map("map_div", {
+        width : '90%',
+        height : '500px',
+        center : new Tmapv2.LatLng(35.1610027, 126.9100381),
+        zoom : 15
+      })
+    })
+  h1 마스크 구매처 검색 시스템 V1
+  div#map_div
+  p Welcome to #{title}

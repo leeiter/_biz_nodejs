@@ -1,0 +1,45 @@
+extends ../layout
+
+block content
+
+    each movie, index in movies
+        div.w3-container.w3-border-bottom.movie_list
+            div.w3-row-padding.row
+                img(src=movie.image)
+                div.p_tag
+                    h5
+                        // HTML 코드에 보이는 주석
+                        //- HTML 코드에 보이지 않는 주석
+                        //- !{} : html tag가 포함된 문자열을 tag를 반영하면서 표현
+                        a(href=movie.link) !{movie.title}
+                    p.w3-opacity= movie.subtitle
+                    p= movie.pubDate	
+                    p= movie.director
+                    p= movie.actor
+                    p= movie.userRating
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            	
+	
+	
+	
+
+	
+	
