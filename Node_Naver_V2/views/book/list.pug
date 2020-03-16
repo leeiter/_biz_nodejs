@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+    each book, index in books
+        div
+            p
+                a(href=book.link) !{book.title}
+            p
+                img(src=book.image)
+            p= book.author
+            p= book.price
+            p= book.discount
+            p= book.publisher
+            p= book.description
+            p= book.pubdate
