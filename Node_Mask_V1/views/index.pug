@@ -32,8 +32,6 @@ block content
         })
       })
 
-      
-
       // 마커 찍기
       marketList.forEach(function(market, index) {
         marker[index] = new Tmapv2.Marker({
@@ -59,10 +57,23 @@ block content
         th 위도
         th 경도
         th 재고상태
+      -
+        var remain = {
+          'plenty' : '충분(100개 이상)',
+          'some' : '보통(~30)',
+          'few' : '부족(~2)',
+          'empty' : '없음'
+        }
       each market, index in stores
         tr
           td= market.name
           td= market.addr
           td= market.lng
           td= market.lat
-          td= market.remain_stat
+          if market.remain_stat
+            if market.remain_stat == 'plenty'
+              td.w3-green= remain[market.remain_stat]
+            else
+              td= remain[market.remain_stat]
+          else
+            td 상태모름
