@@ -57,6 +57,9 @@ class App extends Component {
     }
   };
 
+  // 현재 this 는 app.js 이고
+  // 화살표함수가 아니라 표준 function() {}으로 진행을 한다면
+  // this는 handleCreate 이게 되므로 제대로 작동하지 않게 된다.
   handleCreate = () => {
     const { input, todoList } = this.state;
     this.setState({
@@ -71,6 +74,11 @@ class App extends Component {
   };
 
   handleToggle = id => {
+    // 여기부터
+    // this :  화살표 함수로 되어 있는 이벤트 핸들러는
+    //    this가 바로 현재 Component다.
+    //    this = App.js 의 context
+    //      (문맥, thread의 모든 정보를 담고 있는 것)
     const { todoList } = this.state;
 
     // id 매개변수에 담겨 있는 값이
@@ -114,6 +122,11 @@ class App extends Component {
   // 최초에 어플이 실행되면 한번 작동이 되고
   // 데이터라, 화면 디자인이 변경되면 호출되는 method
   render() {
+
+    contructor(props) {
+
+    }
+
     // 자식 Component에 데이터 전달하기 위해서
     // state로 선언된 데이터들을 props로 변환하기
     const { input, todoList } = this.state;
