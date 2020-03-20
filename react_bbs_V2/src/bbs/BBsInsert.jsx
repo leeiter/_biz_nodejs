@@ -10,28 +10,48 @@ class BBsInsert extends Component {
   // 그 문자를 b_title에 저장하라
   handleChange = e => {
     this.setState({ ...this.state, b_title: e.target.value });
-    console.log("B_TITLE", this.state.b_title);
   };
 
-  bbsAxiosSubmit = () => {
+  bbsAxiosSubmit = ev => {
+    // >>>>>>>>>>>>>>>>>>>>>>>>>>
+    ev.preventDefault();
+
     const { bbs_insert_url } = this.props;
     axios
       .post(bbs_insert_url, { b_title: this.state.b_title })
       .then(result => console.log(result))
       .catch(err => console.log(err));
-    return false;
   };
 
   // ajax를 이용하여 서버에 데이터를 보내기
-  bbsInsertSubmit = () => {
+  bbsInsertSubmit = ev => {
+    // >>>>>>>>>>>>>>>>>>>>
+    ev.preventDefault();
+
     const { bbs_insert_url } = this.props;
     let data = new FormData();
     data.append("b_title", this.state.b_title);
 
-    console.log("전송", this.state.b_title);
+    fetch(bbs_insert_url, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json"
+      },
+      // JSON.stringify() : JSON 객체를 Serialize된 문자열로 변환
+      // JSON.parse() 와 반대되는 개념
 
-    fetch(bbs_insert_url, { method: "POST", body: data });
+      // JSON.parse() :
+      //   JSON 형태의 문자열로 (수신)된 값을 JSON 객체 변환
+      body: JSON.stringify({
+        b_title: this.state.b_title
+      })
+      // body: data
+    });
 
+    // 표준 js에서는 return false를 마지막에 써주면
+    // <div className=""></div>
+    // >>>>>>>>>>>>>>>>>>>>>>
     return false;
   };
 
@@ -42,7 +62,7 @@ class BBsInsert extends Component {
       // <>
       // <React.Fragment></React.Fragment>
       <form
-        onSubmit={this.bbsAxiosSubmit}
+        onSubmit={this.bbsInsertSubmit}
         className="w3-container w3-row-padding"
       >
         <div className="w3-col s9 w3-padding">
@@ -53,7 +73,9 @@ class BBsInsert extends Component {
           />
         </div>
         <div className="w3-col s3 w3-padding">
-          <button className="w3-button w3-blue">저장</button>
+          <button type="submit" className="w3-button w3-blue">
+            저장
+          </button>
         </div>
       </form>
     );

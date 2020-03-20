@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+      $(function() {
+        $("#a1").click(function() {
+          alert("나는 Click Me 입니다.");
+          return false;
+        });
+
+        $("#a2").click(function() {
+          alert("나는 No reFresh 입니다.");
+        });
+
+        $("#form1").submit(function() {
+          alert("나는 form이 전송될 때 실행되는 EVENT 입니다.");
+
+          // 유효성.....
+          return false;
+        });
+
+        $("button").click(function() {
+          alert("나는 버튼 클릭 이벤트 입니다.");
+          $("form").submit();
+        });
+      });
+      function trClick() {
+        alert("tr Click");
+      }
+    </script>
+  </head>
+  <body>
+    <!--
+          form의 기본 이벤트에는 submit 속성이 있다.
+          form 내부에 있는 button을 클릭하거나
+          input box가 1개 있을때 Enter를 누르면
+
+          자동으로 form에 설정된 action 주소로 데이터를 전송하는 기능
+          만약 form에 action이 없으면 현재 보고 있는 주소로
+          다시 redirection이 된다.
+
+          이런.....
+      -->
+    <form id="form1">
+      <input placeholder="문자열 입력" name="String" />
+      <button type="button">전송</button>
+    </form>
+    <!--
+        anchar의 기본 event는 클릭을 하면
+        href에 설정된 주소로 연결되는 기능이다.
+        이때 설정된 주소로 연결이 되면서
+        현재 화면이 사라지고 새로운 화면이 나타난다.
+
+        여기에
+    -->
+    <a href="https://naver.com" id="a1">Click Me</a>
+
+    <!--
+        anchar의 기본
+    -->
+    <a href="javascript:void(0)" id="a2">No reFresy</a>
+    <!--
+        여기....
+    -->
+
+    <!--
+        >>>>>>>>>>>>>>
+    -->
+    <table border="1">
+      <tr onclick="trClick()">
+        <th>1111111111</th>
+        <th>1111111111</th>
+        <th>1111111111</th>
+      </tr>
+      <tr>
+        <td>111111111111</td>
+        <td>111111111111</td>
+        <td>111111111111</td>
+      </tr>
+    </table>
+  </body>
+</html>
