@@ -13,13 +13,9 @@ class PhoneMain extends Component {
   };
 
   // 진리의 원천(source of truth)
-  // >>>>>>>>>>
   state = {
     my_value: ""
   };
-  //   constructor(props) {
-  //     super(props);
-  //   }
 
   //   componentWillMount() {}
 
@@ -52,10 +48,10 @@ class PhoneMain extends Component {
           />
           <PhoneList
             phoneList={this.state.phoneList}
+            my_value={this.state.my_value}
             name="홍길동"
             phone="12345"
             addr="서울특별시"
-            my_value={this.state.my_value}
           />
         </section>
       </React.Fragment>

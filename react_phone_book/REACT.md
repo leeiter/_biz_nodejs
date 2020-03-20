@@ -22,13 +22,15 @@
 - 이때, Main에 선언된 Component에 매개변수를 받을 수 있도록 선언할 수 있다.
 - 네번째 props로 전달받은 method를 callback으로 호출한다.
 - 이때, callback method에 필요한 값을 parameter로 전달할 수 있다.
-
-* 그러면, 실제로는 Main Component에 선언된 method가 실행되면서 Main Component에 선언된 state 변수가 변경이 될 것이다.
-* 그와 동시에 state 변수를 props로 전달 받아 화면에 표시해 놓은 Sub Component도 같이 rendering 되어 값이 표현 된다.
+- 그러면, 실제로는 Main Component에 선언된 method가 실행되면서 Main Component에 선언된 state 변수가 변경이 될 것이다.
+- 그와 동시에 state 변수를 props로 전달 받아 화면에 표시해 놓은 Sub Component도 같이 rendering 되어 값이 표현 된다.
 
 ## 단방향 변수 전달 방식
 
 - Main Component에서 state로 선언된 변수 Main Component의 어디에서나 this.setState() method를 사용하여 변경이 가능하다.
 - 하지만 props로 Sub Component에 전달이 되는 순간 그 변수는 모든 read only가 된다.
-- 이러한 방식을 하향식,
-  > > > > > > > > > > > > > > > > > > > > >
+- 이러한 방식을 하향식, 단방향 변수 전달 방식이라고 한다.
+- React는 state 변수들의 변화를 감지하여 화면을 rendering하는 엔진을 가지고 있다.
+- state로 선언된 변수를 Sub Component에서 변경을 하게 되면 이유없는 rendering이 수시로 발생하고, 성능상 여러가지 문제를 일으킬 수 있다. 특히 메모리 누수등이 발생하여 서버가 다운 될수 도 있다.
+- 그러한 이유로 변수 변경을 제한하는 방식을 사용한 것이고
+- 철저한 캡슐화 원칙의 철학이 담겨 있다.

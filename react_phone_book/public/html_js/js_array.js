@@ -25,3 +25,38 @@ console.log(addr);
 const my = { [name]: "홍길동", 주소: "서울특별시" };
 console.log(my.홍기동);
 console.log(my.주소);
+
+const arr1 = [1, 2, 3, 4, 5];
+const index = 2;
+console.log(arr1[index]);
+
+const j1 = "AA";
+const j2 = "BB";
+const j3 = "CC";
+
+const jclass = {
+  [j1]: "홍길동",
+  [j2]: "이몽룡",
+  [j3]: "성춘향"
+};
+
+// json 객체 선언
+const ajson = { aa: "홍길동", bb: "이몽룡" };
+console.log(ajson.aa); // 홍길동
+console.log(ajson.bb); // 이몽룡
+
+const aa = ajson.aa;
+
+const { aa, bb } = ajson; // aa라는 변수에 ajson.aa 값만 을 복사
+console.log(aa);
+
+var num1 = 30;
+var num2 = 40;
+
+var temp = num1;
+num1 = num2;
+num2 = temp;
+
+[num2, num1] = [num1, num2];
+
+console.log(num1, num2);
