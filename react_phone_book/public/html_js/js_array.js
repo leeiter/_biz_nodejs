@@ -22,8 +22,11 @@ console.log(name);
 console.log(phone);
 console.log(addr);
 
+// [] : 객체로 선언하겠다.
+// name에 홍기동이 담겨있는데
+// name을 [] 통해서 객체로 만들어서 "홍길동"을 담았다.
 const my = { [name]: "홍길동", 주소: "서울특별시" };
-console.log(my.홍기동);
+console.log(my.홍기동); // 홍길동
 console.log(my.주소);
 
 const arr1 = [1, 2, 3, 4, 5];
