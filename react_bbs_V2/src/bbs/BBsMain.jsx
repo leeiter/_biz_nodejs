@@ -77,7 +77,7 @@ class BBsMain extends Component {
         필드영역에 선언된 this.state를 분해하여
         그 중에 bbsList를 별도로 추출을 해두면
         tag 코드에서 사용할 때 {bbsList} 형식으로 사용할 수 있다.
-      */
+    */
     const { bbsList } = this.state;
     return (
       <div className="w3-container">

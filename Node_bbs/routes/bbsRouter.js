@@ -28,7 +28,7 @@ router.get("/", (req, res) => {
   });
 });
 
-router.post("/insert", (req, res) => {
+router.post("/", (req, res) => {
   req.body.b_date = moment().format("YYYY[-]MM[-]DD");
   req.body.b_time = moment().format("HH:mm:ss");
 

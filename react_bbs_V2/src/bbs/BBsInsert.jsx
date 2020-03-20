@@ -9,11 +9,13 @@ class BBsInsert extends Component {
   // 키보드로 입력박스에 문자를 입력하면
   // 그 문자를 b_title에 저장하라
   handleChange = e => {
+    console.log(e.target.value);
     this.setState({ ...this.state, b_title: e.target.value });
+    console.log("B_TITLE", this.state.b_title);
   };
 
   bbsAxiosSubmit = ev => {
-    // >>>>>>>>>>>>>>>>>>>>>>>>>>
+    // 기본 submit 이벤트 무력화
     ev.preventDefault();
 
     const { bbs_insert_url } = this.props;
@@ -25,12 +27,15 @@ class BBsInsert extends Component {
 
   // ajax를 이용하여 서버에 데이터를 보내기
   bbsInsertSubmit = ev => {
-    // >>>>>>>>>>>>>>>>>>>>
+    // 기본적으로 수행되는 이벤트를 하지말라
+    // submit()을 수행하지 말라
     ev.preventDefault();
 
     const { bbs_insert_url } = this.props;
-    let data = new FormData();
-    data.append("b_title", this.state.b_title);
+    // let data = new FormData();
+    // data.append("b_title", this.state.b_title);
+
+    console.log("전송", this.state.b_title);
 
     fetch(bbs_insert_url, {
       method: "POST",
@@ -49,10 +54,12 @@ class BBsInsert extends Component {
       // body: data
     });
 
-    // 표준 js에서는 return false를 마지막에 써주면
-    // <div className=""></div>
-    // >>>>>>>>>>>>>>>>>>>>>>
-    return false;
+    // 표준 js에서는 return false 마지막에 써주면 submit() 이벤트를
+    // 중단할수 있었는데
+    // react에서는 return false가 아무런 효과를 내지 못한다.
+    // 그래서 react에서는 이벤트 시작되는 부분에
+    // 이벤트 버블링을 방지하는 코드를 넣어 주어야 한다.(윗쪽참조)
+    // return false;
   };
 
   render() {

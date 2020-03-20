@@ -20,7 +20,7 @@
         $("#form1").submit(function() {
           alert("나는 form이 전송될 때 실행되는 EVENT 입니다.");
 
-          // 유효성.....
+          // 유효성검사 등을 수행할 수도 있다.
           return false;
         });
 
@@ -44,7 +44,8 @@
           만약 form에 action이 없으면 현재 보고 있는 주소로
           다시 redirection이 된다.
 
-          이런.....
+          이런 동작이 이루어지면서 현재 화면이 사라지고
+          다시 refresh 되는 현상이 있다
       -->
     <form id="form1">
       <input placeholder="문자열 입력" name="String" />
@@ -56,31 +57,33 @@
         이때 설정된 주소로 연결이 되면서
         현재 화면이 사라지고 새로운 화면이 나타난다.
 
-        여기에
+        여기에 href="#" 이라고 표현하면
+        거의 보이지 않지만 현재 페이지가 refresh 되는 현상 발생한다
     -->
     <a href="https://naver.com" id="a1">Click Me</a>
 
     <!--
-        anchar의 기본
+        anchar의 기본 event를 무력화 시키고
+        모양만 남겨놓는 코드
     -->
     <a href="javascript:void(0)" id="a2">No reFresy</a>
     <!--
-        여기....
+        이렇한 코드를 작성하는 이유는
+        기본 기능을 사용하지 않고
+        별도로 js(jq)에서 클릭 기능을 임의로 만들기 위한 방법
     -->
 
-    <!--
-        >>>>>>>>>>>>>>
-    -->
+    <!-- table 이벤트 연습 -->
     <table border="1">
-      <tr onclick="trClick()">
-        <th>1111111111</th>
-        <th>1111111111</th>
-        <th>1111111111</th>
+      <tr onClick="trclick()">
+        <th>11111111111</th>
+        <th>22222222222</th>
+        <th>33333333333</th>
       </tr>
       <tr>
-        <td>111111111111</td>
-        <td>111111111111</td>
-        <td>111111111111</td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
       </tr>
     </table>
   </body>

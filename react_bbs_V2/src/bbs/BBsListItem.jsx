@@ -32,7 +32,7 @@ class BBsListItem extends Component {
   };
 
   editInput = ev => {
-    const { b_title } = this.props;
+    // const { b_title } = this.props;
     this.setState({
       ...this.state,
       b_title: ev.target.value
