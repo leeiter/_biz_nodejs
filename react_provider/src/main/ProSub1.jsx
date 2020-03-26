@@ -7,18 +7,13 @@ class ProSub1 extends Component {
   }
 
   static contextType = MProvider;
+
   //   componentWillMount() {}
-
   //   componentDidMount() {}
-
   //   componentWillReceiveProps(nextProps) {}
-
   //   shouldComponentUpdate(nextProps, nextState) {}
-
   //   componentWillUpdate(nextProps, nextState) {}
-
   //   componentDidUpdate(prevProps, prevState) {}
-
   //   componentWillUnmount() {}
 
   render() {
@@ -28,6 +23,7 @@ class ProSub1 extends Component {
       */
     // const { message } = this.props;
     const { message } = this.context;
+
     return (
       <div>
         <h3>나는 Sub1 입니다.</h3>

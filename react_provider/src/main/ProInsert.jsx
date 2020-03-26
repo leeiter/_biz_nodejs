@@ -26,6 +26,7 @@ class ProInsert extends Component {
   };
 
   render() {
+    // const { props } = this;
     const { message } = this.state;
     return (
       <div>
