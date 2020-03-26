@@ -7,13 +7,18 @@ class BucketList extends Component {
 
     // 1개의 callback 함수 - 화살표 함수를 이용한 축약형 코드
     const list = bucketList.map(bucket => (
-      <BucketItem key={bucket.id} bucketItem={bucket} />
+      <BucketItem
+        key={bucket.b_id}
+        bucket_update={this.props.bucket_update}
+        bucketItem={bucket}
+        changeFlag={this.props.changeFlag}
+      />
     ));
 
     // callback 일반 함수
-    const list1 = bucketList.map(bucket => {
-      return <BucketItem key={bucket.id} bucketItem={bucket} />;
-    });
+    // const list1 = bucketList.map(bucket => {
+    //   return <BucketItem key={bucket.id} bucketItem={bucket} />;
+    // });
 
     // 기본 함수 코드
     const f1 = function(arg1, arg2) {
@@ -36,7 +41,7 @@ class BucketList extends Component {
             <th>추가일자</th>
             <th>BUCKET</th>
             <th>완료</th>
-            <th>비고</th>
+            <th>취소</th>
           </tr>
           {list}
         </table>

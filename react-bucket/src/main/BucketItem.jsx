@@ -1,15 +1,37 @@
-import React from "react";
+import React, { Component } from "react";
+import BucketItemView from "./BucketItemView";
+import BucketItemEdit from "./BucketItemEdit";
 
-const BucketItem = ({ bucketItem }) => {
-  return (
-    <tr>
-      <td>{bucketItem.b_flag}</td>
-      <td>{bucketItem.b_start_date}</td>
-      <td>{bucketItem.b_title}</td>
-      <td>{bucketItem.b_end_date}</td>
-      <td>{bucketItem.b_cancle}</td>
-    </tr>
-  );
-};
+class BucketItem extends Component {
+  state = {
+    isEditing: false
+  };
+
+  handleOnEditing = () => {
+    this.setState({ isEditing: !this.state.isEditing });
+  };
+
+  render() {
+    const { bucketItem } = this.props;
+
+    return (
+      <tr>
+        {this.state.isEditing ? (
+          <BucketItemEdit
+            bucketItem={bucketItem}
+            onEditing={this.handleOnEditing}
+            bucket_update={this.props.bucket_update}
+          />
+        ) : (
+          <BucketItemView
+            bucketItem={bucketItem}
+            onEditing={this.handleOnEditing}
+            changeFlag={this.props.changeFlag}
+          />
+        )}
+      </tr>
+    );
+  }
+}
 
 export default BucketItem;
