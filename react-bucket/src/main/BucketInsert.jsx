@@ -36,7 +36,7 @@ class BucketInsert extends Component {
    */
   handleOnKeyPress = ev => {
     const { bucket_add } = this.props;
-    const { bucket_title } = this.props;
+    const { bucket_title } = this.state;
 
     if (ev.key === "Enter") {
       if (bucket_title === "") {
