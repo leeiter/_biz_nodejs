@@ -38,18 +38,21 @@ class BucketInsert extends Component {
     const { bucket_add } = this.props;
     const { bucket_title } = this.props;
 
-    if (bucket_title === "") {
-      alert("입력해주세요");
-      return false;
+    if (ev.key === "Enter") {
+      if (bucket_title === "") {
+        alert("Buket을 입력 후 Enter...");
+        return false;
+      }
+
+      // bucket_add(this.state.bucket_title); // 정형적
+
+      // 비정형적, 비구조적, 분해 후 독립변수로 사용
+      bucket_add(bucket_title);
+
+      this.setState({
+        bucket_title: ""
+      });
     }
-
-    // alert(this.state.bucket_title);
-
-    // bucket_add(this.state.bucket_title); // 정형적
-    bucket_add(bucket_title); // 비정형적, 비구조적, 분해 후 독립변수로 사용
-    this.setState({
-      bucket_title: ""
-    });
   };
 
   render() {
