@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import BucketInsert from "./BucketInsert";
 import BucketList from "./BucketList";
+import BucketContext from "../provider/BucketProvider";
 
 class BucketMain extends Component {
   id = 0;
@@ -16,7 +17,12 @@ class BucketMain extends Component {
         b_end_check: false,
         b_cancle: false
       }
-    ]
+    ],
+    changeFlag: id => this.changeFlag(id),
+    bucket_update: (id, b_title) => this.bucket_update(id, b_title),
+    bucket_add: b_title => this.bucket_add(b_title),
+    bucket_complete: (id, b_end_date) => this.bucket_complete(id, b_end_date),
+    toggleCancel: id => this.toggleCancel(id)
   };
 
   // 17이후는 사용불가
@@ -58,6 +64,7 @@ class BucketMain extends Component {
   changeFlag = id => {
     // const b_flage = ["☆", "★", "◎", "●"];
     const b_flage = ["대충", "일반", "중요", "매우중요"];
+
     this.setState({
       bucketList: this.state.bucketList.map(bucket => {
         if (bucket.b_id === id) {
@@ -92,7 +99,6 @@ class BucketMain extends Component {
   */
   bucket_add = b_title => {
     const { bucketList } = this.state;
-
     const date = new Date();
 
     // b_id 값은 bucketList의 PK 값을 값는 칼럼으로
@@ -106,7 +112,7 @@ class BucketMain extends Component {
       b_title: b_title,
       b_end_date: "",
       b_end_check: false,
-      b_cancle: false
+      b_cancel: false
     };
 
     this.setState({
@@ -125,10 +131,52 @@ class BucketMain extends Component {
     this.setState({
       // bucketList를 map으로 반복 실행하면서
       // 각요소의 id값과 매개변수로 받은 id값이 일치하면
-      // b_title만 새로운 값으로 변경하여 return
+      // b_title만 새로운 값으로 변경하여 return하라
       bucketList: bucketList.map(bucket =>
         bucket.b_id === id ? { ...bucket, b_title: b_title } : bucket
       )
+    });
+  };
+
+  /*
+    완료선택이 이루어 지면 bucketList를 map으로 반복하면서
+    id 값과 일치하는 항목을 찾고
+    있으면 해당 항목을 변경하는 작업 수행
+  */
+  bucket_complete = (id, b_end_date) => {
+    const { bucketList } = this.state;
+
+    this.setState({
+      bucketList: bucketList.map(bucket => {
+        // id 값과 일치하는 리스트가 있느냐?
+        if (bucket.b_id === id) {
+          const date = new Date();
+
+          // 현재 항목의 b_end_date 값이 있느냐?
+          // 없으면 새로만든 date 값을 사용하고
+          // 있으면 값을 지우는 ""으로 사용하겠다.
+          const end_date = bucket.b_end_date === "" ? date : "";
+          return { ...bucket, b_end_date: end_date };
+        } else {
+          return bucket;
+        }
+        // bucket.b_id === id ? { ...bucket, b_end_date: "??" } : bucket;
+      })
+    });
+  };
+
+  toggleCancel = id => {
+    const { bucketList } = this.state;
+
+    this.setState({
+      bucketList: bucketList.map(bucket => {
+        if (bucket.b_id === id) {
+          // bucket.b_cancel 값을 true -> false, false -> trhe
+          return { ...bucket, b_cancel: !bucket.b_cancel };
+        } else {
+          return bucket;
+        }
+      })
     });
   };
 
@@ -152,13 +200,10 @@ class BucketMain extends Component {
   render() {
     return (
       <div>
-        <p>Bucket List Main</p>
-        <BucketInsert bucket_add={this.bucket_add} />
-        <BucketList
-          bucket_update={this.bucket_update}
-          bucketList={this.state.bucketList}
-          changeFlag={this.changeFlag}
-        />
+        <BucketContext.Provider value={this.state}>
+          <BucketInsert />
+          <BucketList />
+        </BucketContext.Provider>
       </div>
     );
   }

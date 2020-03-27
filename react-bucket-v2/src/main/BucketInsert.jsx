@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import BucketContext from "../provider/BucketProvider";
 
 class BucketInsert extends Component {
   // input box를 사용하는 Component에서
@@ -6,6 +7,12 @@ class BucketInsert extends Component {
   state = {
     bucket_title: ""
   };
+
+  // 이 Component에서 상위 Component에서 제공한
+  // Context.Provider를
+  // 사용하여 state 변수와 handler method들을 사용하겠다.
+  // 내부에서 this.context 라는 변수가 생성이 된다.
+  static contextType = BucketContext;
 
   /*
     현재 Component에 선언된 state.bucket_title 변수에 사용자의
@@ -35,7 +42,7 @@ class BucketInsert extends Component {
     전체 Component가 바라보고 있는 배열에 추가하도록 수행하자
    */
   handleOnKeyPress = ev => {
-    const { bucket_add } = this.props;
+    const { bucket_add } = this.context;
     const { bucket_title } = this.state;
 
     if (ev.key === "Enter") {

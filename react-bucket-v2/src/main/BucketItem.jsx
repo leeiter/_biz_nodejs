@@ -14,19 +14,25 @@ class BucketItem extends Component {
   render() {
     const { bucketItem } = this.props;
 
+    const item_cancel = {
+      backgroundColor: "yellow",
+      color: "gray"
+    };
+
     return (
-      <tr>
+      <tr
+        onClick={this.handleOnEditing}
+        style={bucketItem.b_cancel ? item_cancel : {}}
+      >
         {this.state.isEditing ? (
           <BucketItemEdit
             bucketItem={bucketItem}
             onEditing={this.handleOnEditing}
-            bucket_update={this.props.bucket_update}
           />
         ) : (
           <BucketItemView
             bucketItem={bucketItem}
             onEditing={this.handleOnEditing}
-            changeFlag={this.props.changeFlag}
           />
         )}
       </tr>

@@ -1,18 +1,16 @@
 import React, { Component } from "react";
 import BucketItem from "./BucketItem";
+import BucketContext from "../provider/BucketProvider";
 
 class BucketList extends Component {
+  static contextType = BucketContext;
+
   render() {
-    const { bucketList } = this.props;
+    const { bucketList } = this.context;
 
     // 1개의 callback 함수 - 화살표 함수를 이용한 축약형 코드
     const list = bucketList.map(bucket => (
-      <BucketItem
-        key={bucket.b_id}
-        bucket_update={this.props.bucket_update}
-        bucketItem={bucket}
-        changeFlag={this.props.changeFlag}
-      />
+      <BucketItem key={bucket.b_id} bucketItem={bucket} />
     ));
 
     // callback 일반 함수
