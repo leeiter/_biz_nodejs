@@ -30,11 +30,7 @@ class BBsMain extends Component {
         전달하기 위해 비 구조화를 실행
     */
     const { bbsList } = this.state;
-    return (
-      <div>
-        <BBsList bbsList={bbsList} />
-      </div>
-    );
+    return <BBsList bbsList={bbsList} />;
   }
 
   componentWillMount() {}

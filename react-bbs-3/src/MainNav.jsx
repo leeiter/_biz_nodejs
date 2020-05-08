@@ -2,28 +2,29 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 
 const MainNav = () => {
+  const linkStyle = {
+    color: "white",
+  };
   return (
-    <div>
-      <nav className="navbar navbar-expand bg-primary">
-        <ul className="navbar-nav text-white">
-          <li className="nav-item">
-            <Link to="/" className="nav-link">
-              HOME
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/bbsWrite" className="nav-link">
-              BBS
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/login" className="nav-link">
-              LOGIN
-            </Link>
-          </li>
-        </ul>
-      </nav>
-    </div>
+    <nav className="navbar navbar-expand-sm bg-dark justify-content-center nav">
+      <ul className="navbar-nav">
+        <li className="nav-item">
+          <Link to="/" style={linkStyle} className="nav-link">
+            HOME
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link to="/bbsWrite" style={linkStyle} className="nav-link nav-bbs">
+            BBS
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link to="/login" style={linkStyle} className="nav-link">
+            LOGIN
+          </Link>
+        </li>
+      </ul>
+    </nav>
   );
 };
 
