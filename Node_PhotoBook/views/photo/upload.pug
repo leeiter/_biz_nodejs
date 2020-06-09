@@ -1,0 +1,17 @@
+extends ../layout
+
+block content
+    section.container-fluid
+        form(method="POST", enctype="multipart/form-data")
+            .form-group
+                label(for="pTitle") Title
+                input#pTitle.form-control(name="pTitle", value=photo.pTitle, placeholder="제목을 입력하세요")
+            .form-group
+                label(for="pText") Text
+                input#pText.form-control(name="pText", value=photo.pText, placeholder="사진설명을 입력하세요")
+            .form-group
+                label(for="pFile") File
+                input#pFile.form-control(name="pFile", type="file", accept=".gif, .jpg, .jpeg, .png")
+                input#pFile1.form-control(type="file", accept="image/*")
+            .form-group.text-right
+                button.btn.btn-primary SAVE
