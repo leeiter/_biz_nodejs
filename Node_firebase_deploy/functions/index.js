@@ -55,8 +55,10 @@ app.use(function (err, req, res, next) {
   exports 하는  apllication 이름은
   프로젝트 root firebase.json 에 명시해 주어야 한다.
 
-  index.js에는 꼭 필요한 >>>
-  
+  index.js에는 꼭 필요한 미들웨어만 남기고
+  나머지는 삭제해주는 것이 좋다.
+  미들웨어가 많으면 호환성 등의 문제를 일으키기 쉽다.
 */
+
 // module.exports = app;
 exports.application = firebaseFunction.https.onRequest(app);

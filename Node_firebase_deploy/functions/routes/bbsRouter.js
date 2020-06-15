@@ -34,7 +34,7 @@ moment.tz.setDefault("Asia/Seoul");
 
   .orderByChild("b_date") : b_date 칼럼을 기준으로 오름차순 정렬
   키값으로 오름차순 정렬은 되는데 내림차순(DESC) 정렬이 불가능하다
-  복수(2개 이상)의  >> 
+  복수(2개 이상)의  칼럼으로 정렬이 불가능하다.
 */
 /* GET home page. */
 router.get("/", (req, res, next) => {

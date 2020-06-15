@@ -10,6 +10,8 @@
 - npm install pug
 - npm install firebase
 - npm install firebase-functions
+- npm install moment
+- npm install moment-timezone
 
 ## function 폴더의 package.json 수정
 
@@ -21,12 +23,8 @@
 ## project 폴더의 firebase.json 수정
 
 - rewrites의 destination 삭제하고
+- "function": "application" 추가
 
-"destination": "/index.html"
+## 변수 application
 
-"rewrites": [
-{
-"source": "**",
-"function": "application"
-}
-]
+- exports.application = firebaseFunction.https.onRequest(app); 의 application 과 위의 "function": "application" 이 동일해야 제대로 작동을 한다.
