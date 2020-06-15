@@ -34,7 +34,7 @@ moment.tz.setDefault("Asia/Seoul");
 
   .orderByChild("b_date") : b_date 칼럼을 기준으로 오름차순 정렬
   키값으로 오름차순 정렬은 되는데 내림차순(DESC) 정렬이 불가능하다
-  복수(2개 이상)의 칼럼으로 정렬이 불가능 하다.
+  복수(2개 이상)의  >> 
 */
 /* GET home page. */
 router.get("/", (req, res, next) => {
@@ -116,6 +116,7 @@ router.post("/input", (req, res) => {
   // form에서 전송되어 온 seq 값이 없으면
   // 새로운 seq를 생성해서 insert 상태로 만들고
   // 날짜와 시각을 생성하여 data(req.body) 에 추가
+  // js 에서 "", undefined : false
   if (!seq) {
     // moment 를 사용하여
     // 현재 날짜를 년-월-일 형태의 문자열로 추출하기

@@ -1,0 +1,34 @@
+extends ../layout
+
+block content
+    script.
+        $(function() {
+            
+            $("button.btn-primary").click(function() {
+                document.location.href = "/bbs"
+            })
+
+            $("button.btn-success").click(function() {
+                document.location.href = "/bbs/update/!{bbs.seq}"
+            })
+
+            $("button.btn-warning").click(function() {
+                if(confirm("정말 삭제할까요?")) {
+                    document.location.href = "/bbs/delete/!{bbs.seq}"
+                }
+            })
+
+        })
+
+    section.container-fluid
+        .card
+            .card-title= bbs.b_title
+            .card-body= bbs.b_text
+            .card-footer= bbs.b_writer
+    
+    section.container-fluid.text-right
+        button.btn.btn-primary.m-2 LIST
+        button.btn.btn-success.m-2 UPDATE
+        button.btn.btn-warning.m-2 DELETE
+        
+        
